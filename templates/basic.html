@@ -3,12 +3,27 @@
    <meta name="description" content="Website">
    <meta name="keywords" content="">
    <title>Website</title>
+
+   <script type="text/javascript" src="{{ static_url("scripts/load_articles.js") }}"></script>
 </head>
+
 <body>
-  <script src="../scripts/load_articles.js">load_articles({{articlesList}})</script>
   <div id="container_list_of_articles">
-    <ul id="list_of_articles"></ul>
+    <ul id="list_of_articles">
+    {% for article in articlesList %}
+      <li>{{article}}</li>
+    {% end %}
+    </ul>
   </div>
+
   <div id="articles"></div>
+  {% for article in articlesList %}
+    {% include article %}
+  {% end %}
+
+  <!-- <script type="text/javascript">
+  load_articles(JSON.parse('{%raw articlesList %}'));
+  </script> -->
+
 </body>
 </html>

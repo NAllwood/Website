@@ -5,24 +5,21 @@ import os
 import json
 
 settings = {
+    'debug': True,
+    'static_path': os.path.join(os.path.dirname(__file__), 'static'),
     'template_path' :os.path.join(os.path.dirname(__file__), "templates")
 }
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-            articlesList = filter(lambda x: x == "basic.html", os.listdir(os.path.join(os.path.dirname(__file__), "templates")))
-            self.render("basic.html", param=articlesList)
-
-# class RoomHandler(tornado.web.RequestHandler):
-#     def get(self):
-#         with open('rooms.json','r') as roomfile:
-#             roomList = json.load(roomfile)
-#             self.render("room.html",param = roomList)
+            articlesList = filter(lambda x: x != "basic.html", os.listdir(os.path.join(os.path.dirname(__file__), "templates")))
+            js_path = os.path.join('static', 'scripts')
+            print(json.dumps(articlesList))
+            self.render("basic.html", articlesList=articlesList)
 
 
 handlers = [
-    (r'/', MainHandler),
-    #(r'/rooms', RoomHandler)
+    (r'/', MainHandler)
 ]
 
 def signal_handler(signum, frame):
