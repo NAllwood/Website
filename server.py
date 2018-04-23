@@ -7,14 +7,13 @@ import json
 settings = {
     'debug': True,
     'static_path': os.path.join(os.path.dirname(__file__), 'static'),
-    'template_path' :os.path.join(os.path.dirname(__file__), "templates")
+    'template_path' :os.path.join(os.path.dirname(__file__), "static/templates")
 }
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-            articlesList = filter(lambda x: x != "basic.html", os.listdir(os.path.join(os.path.dirname(__file__), "templates")))
+            articlesList = filter(lambda x: x != "basic.html", os.listdir(os.path.join(os.path.dirname(__file__), "static/templates")))
             js_path = os.path.join('static', 'scripts')
-            print(json.dumps(articlesList))
             self.render("basic.html", articlesList=articlesList)
 
 
