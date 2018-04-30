@@ -18,25 +18,27 @@
           <h1>Hello, I'm Nevin Allwood.</h1>
           <h2>I develop software.</h2>
       </div>
-      <div class="button" onclick="scroll_to(navbar,600)"> Learn more about what I do <span><b>&rarr;</b></span></div>
-      <div id="hello_page_down" class="simple_navigator" onclick="scroll_to(navbar,600)">
+      <div class="button" onclick="scroll_to(navbar,600,0)"> Learn more about what I do <span><b>&rarr;</b></span></div>
+      <div id="hello_page_down" class="simple_navigator" onclick="scroll_to(navbar,600,0)">
         Learn more about what I do <br><b><i class="down"></i></b>
       </div>
     </div>
   </div>
 
-  <div id="navbar">
-    <div class="more_space_left"id="nav_about" onclick="scroll_to(about,600)" margin-left="30px">About</div>
-    <div id="nav_projects" onclick="scroll_to(projects,600)">Projects</div>
-    <div id="nav_contact" onclick="scroll_to(contact,600)">Contact</div>
+  <div id="navbar_dummy">
+    <div id="navbar">
+      <div class="more_space_left"id="nav_about" onclick="scroll_to(about_container,600,1)" margin-left="30px">About</div>
+      <div id="nav_projects" onclick="scroll_to(projects_container,600,1)">Projects</div>
+      <div id="nav_contact" onclick="scroll_to(contact_container,600,1)">Contact</div>
+    </div>
   </div>
 
   <div id="articles" class="articles">
-    <div class="article_container">
-      <article id="about" class="text_article">
-        <div id="about_title" class="article_title">
-          About Me
-        </div>
+    <div id="about_container" class="article_container">
+      <div id="about_title" class="article_title">
+        About Me
+      </div>
+      <article id="about_article" class="text_article">
         <div class="rower">
           <img class="picture" src="{{static_url("images/myface.JPG")}}" alt="Me">
           <div class="rower_element">
@@ -58,7 +60,7 @@
 
       </article>
     </div>
-    <div class="article_container">
+    <div id="projects_container" class="article_container">
       <article id="projects" class="text_article">
         <p> this will be the projects article </p>
         <br>
@@ -97,7 +99,7 @@
         <br>
       </article>
     </div>
-    <div class="article_container">
+    <div id="contact_container" class="article_container">
       <article id="contact" class="text_article">
         <p> This will be the contact article </p>
         <br>
