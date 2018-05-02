@@ -18,7 +18,7 @@
           <h1>Hello, I'm Nevin Allwood.</h1>
           <h2>I develop software.</h2>
       </div>
-      <div class="button" onclick="scroll_to(navbar,600,0)"> Learn more about what I do <span><b>&rarr;</b></span></div>
+      <div class="button page_down_button" onclick="scroll_to(navbar,600,0)"> Learn more about what I do <span><b>&rarr;</b></span></div>
       <div id="hello_page_down" class="simple_navigator" onclick="scroll_to(navbar,600,0)">
         Learn more about what I do <br><b><i class="down"></i></b>
       </div>
@@ -39,9 +39,10 @@
         About Me
       </div>
       <article id="about_article" class="text_article">
-        <div class="rower">
+
+        <div id="about_section" class="rowable">
           <img class="picture" src="{{static_url("images/myface.JPG")}}" alt="Me">
-          <div class="rower_element">
+          <div class="rowable_element">
             <ul class="no_bullet_list">
               <li class="about_listing">
                 <span class="descr"><b>Age:</b></span><span>22</span>
@@ -57,9 +58,41 @@
           </div>
         </div>
 
+        <h2 id="education_section" class="subsection_header">Education</h2>
+        <div class="rowable">
+          <div id="left_timeline_button" class="button left_button disabled">
+          </div>
+          <section class="timeline">
+            <ol>
+              <li>
+                <div id="school_element" class="time_element">
+                  <div class="time_textbox">
+                    <time>2013</time>
+                    <p><span class="highlight">Abitur</span> at the <a class="link" href="http://www.lise-meitner-geldern.de/">Lise-Meiter-Gymnasium</a> in Geldern.<br>
+                      Computer science as intensive course.</p>
+                  </div>
+                  <div class="half_arrow"></div>
+                </div>
+              </li>
+              <li>
+                <div id="bachelor_element" class="time_element">
+                  <div class="time_textbox">
+                    <time>2018</time>
+                    <span class="highlight">Bachelor of Science</span> in <a class="link" href="https://www.uni-due.de/studienangebote/studiengang.php?id=3"> Systems Engineering</a> at the University of Duisburg-Essen.
+                  </div>
+                  <div class="half_arrow"></div>
+                </div>
+              </li>
+              <li></li>
+            </ol>
+          </section>
+          <div id="right_timeline_button" class="button right_button disabled">
+          </div>
+        </div>
 
       </article>
     </div>
+
     <div id="projects_container" class="article_container">
       <article id="projects" class="text_article">
         <p> this will be the projects article </p>

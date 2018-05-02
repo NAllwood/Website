@@ -1,22 +1,24 @@
 
 function update_navbar() {
   var navbar = document.getElementById("navbar");
+  var nav_about = document.getElementById("nav_about");
+  var nav_projects = document.getElementById("nav_projects");
+  var nav_contact = document.getElementById("nav_contact");
+  var nav_height = navbar.getBoundingClientRect().height;
 
   var articles = document.getElementById("articles");
   var about = document.getElementById("about_container");
   var projects = document.getElementById("projects_container");
   var contact = document.getElementById("contact_container");
 
-  var about_content = document.getElementById("about_article");
+  var about_content = document.getElementById("about_section");
+  var education = document.getElementById("education_section");
 
 
-  var nav_about = document.getElementById("nav_about");
-  var nav_projects = document.getElementById("nav_projects");
-  var nav_contact = document.getElementById("nav_contact");
 
   var about_title = document.getElementById("about_title");
 
-  var nav_height = navbar.getBoundingClientRect().height;
+
 
 
   /* fix or unfix navbar */
@@ -55,6 +57,10 @@ function update_navbar() {
     contact_title.classList.add("slide_in_left");
   }
 
+  if (window.pageYOffset >= education.offsetTop -64-nav_height){
+    //TODO
+    document.getElementById("").add("slide_in_left");
+  }
 
 }
 
