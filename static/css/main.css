@@ -128,12 +128,21 @@ color: #fffb1e;   - contrast yellow
   border-right: 4px solid var(--light_color);
 }
 
+.submit_button {
+  background-color: var(--light_color);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+}
+.submit_button:hover {
+    background-color: var(--dark_color);
+}
+
 .disabled {
   cursor: auto;
   opacity: 0.2;
 }
-
-
 
 .simple_navigator {
   bottom: 2.5%;
@@ -151,6 +160,7 @@ color: #fffb1e;   - contrast yellow
   font-size:1.4rem;
   color:inherit;
 }
+
 .articles {
   display:flex;
   flex-direction: column;
@@ -181,7 +191,6 @@ color: #fffb1e;   - contrast yellow
 
 }
 .text_article {
-  opacity: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -258,6 +267,7 @@ color: #fffb1e;   - contrast yellow
   align-content:space-between;
   background-color: inherit;
   width: inherit;
+  opacity: 0;
 }
 .rowable div.rowable_element {
   margin-left:48px;
@@ -330,6 +340,7 @@ color: #fffb1e;   - contrast yellow
   position:absolute;
   width: 304px;
   left: calc(100% + 10px - 304px * 0.5);
+  opacity: 0;
 }
 .time_textbox {
   padding: 16px;
@@ -366,10 +377,41 @@ color: #fffb1e;   - contrast yellow
   border-color: transparent transparent var(--light_color) transparent ;
 }
 
+.subsection_header {
+  font-size: 1.5em;
+  color: var(--darkest_grey);
+  margin: 32px;
+}
+
+label {
+  color: var(--text_grey);
+}
+
+input[type=text], input[type=email], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--light_color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    resize: vertical
+}
+.contact_form_container {
+    border-radius: 4px;
+    background-color: var(--background_grey);
+    padding: 20px;
+}
+
 @keyframes slideInLeft {
   0%   {opacity: 0; left:-300px; top:0px;}
   100% {opacity: 1; left:0px; top:0px;}
 }
+@keyframes slideInLeft_timeline_element {
+  0%   {opacity: 0; left:calc(100% + 10px - 604px * 0.5); top: -24px;}
+  100% {opacity: 1; left:calc(100% + 10px - 304px * 0.5); top: -24px;}
+}
+
 .slide_in_left {
   animation-name: slideInLeft;
   animation-duration: 1s;
@@ -387,11 +429,25 @@ color: #fffb1e;   - contrast yellow
   animation-fill-mode: backwards;
   animation-direction: reverse;
 }
+.slide_in_left_wait {
+  animation-name: slideInLeft_timeline_element;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+  animation-delay: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
 
 @keyframes slideInRight {
   0%   {opacity: 0; left:300px; top:0px;}
   100% {opacity: 1; left:0px; top:0px;}
 }
+@keyframes slideInRight_timeline_element {
+  0%   {opacity: 0; left:calc(100% + 10px - 4px * 0.5); top: calc(100% + 24px);}
+  100% {opacity: 1; left:calc(100% + 10px - 304px * 0.5); top: calc(100% + 24px);}
+}
+
 .slide_in_right {
   animation-name: slideInRight;
   animation-duration: 1s;
@@ -399,6 +455,15 @@ color: #fffb1e;   - contrast yellow
   animation-direction: normal;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+}
+.slide_in_right_wait {
+  animation-name: slideInRight_timeline_element;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
 }
 .slide_out_right {
   animation-name: slideInRight;
@@ -422,5 +487,24 @@ color: #fffb1e;   - contrast yellow
   animation-direction: normal;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+
+}
+.fade_in_wait {
+  animation-name: fadeIn;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
   animation-delay: 1s;
+}
+.fade_out {
+  animation-name: fadeIn;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-direction: reverse;
+
 }

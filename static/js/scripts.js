@@ -1,67 +1,96 @@
 
-function update_navbar() {
-  var navbar = document.getElementById("navbar");
-  var nav_about = document.getElementById("nav_about");
-  var nav_projects = document.getElementById("nav_projects");
-  var nav_contact = document.getElementById("nav_contact");
-  var nav_height = navbar.getBoundingClientRect().height;
-
-  var articles = document.getElementById("articles");
-  var about = document.getElementById("about_container");
-  var projects = document.getElementById("projects_container");
-  var contact = document.getElementById("contact_container");
-
-  var about_content = document.getElementById("about_section");
-  var education = document.getElementById("education_section");
-
-
-
-  var about_title = document.getElementById("about_title");
-
-
-
-
-  /* fix or unfix navbar */
-  if (window.pageYOffset >= articles.offsetTop - nav_height) {
-    navbar.classList.add("sticky")
-  } else if (window.pageYOffset <= articles.offsetTop) {
-    navbar.classList.remove("sticky");
-    nav_about.classList.remove("active");
-    nav_projects.classList.remove("active");
-    nav_contact.classList.remove("active");
+function add_sticky(elements){
+  for (entry in elements){
+    element = elements[entry];
+    element.classList.add("sticky");
   }
+}
+function remove_sticky(elements){
+  document.getElementById("nav_about").classList.remove("active");
 
-  /* activate right articles in navbar */
-  if (window.pageYOffset >= about.offsetTop -64 -nav_height && window.pageYOffset < projects.offsetTop -64 -nav_height){
-    nav_about.classList.add("active");
-    about_content.classList.add("fade_in");
-    nav_projects.classList.remove("active");
-    nav_contact.classList.remove("active");
-  }else if (window.pageYOffset >= projects.offsetTop -64 -nav_height && window.pageYOffset < contact.offsetTop -64 -nav_height){
-    nav_about.classList.remove("active");
-    nav_projects.classList.add("active");
-    nav_contact.classList.remove("active");
-  }else if (window.pageYOffset >= contact.offsetTop -64 -nav_height && window.pageYOffset < contact.offsetBottom -64 -nav_height){
-    nav_about.classList.remove("active");
-    nav_projects.classList.remove("active");
-    nav_contact.classList.add("active");
+  for (entry in elements){
+    element = elements[entry];
+    element.classList.remove("sticky");
   }
+}
+function toggle_active (elements){
+  document.getElementById("nav_about").classList.remove("active");
+  document.getElementById("nav_projects").classList.remove("active");
+  document.getElementById("nav_contact").classList.remove("active");
 
-  if (window.pageYOffset >= about.offsetTop -64-nav_height){
-    about_title.classList.add("slide_in_left");
+  for (entry in elements){
+    element = elements[entry];
+    element.classList.add("active");
   }
-  if (window.pageYOffset >= projects.offsetTop -64-nav_height){
-    projects_title.classList.add("slide_in_left");
+}
+function add_slide_in_left(elements){
+  for (entry in elements){
+    element = elements[entry];
+    element.classList.add("slide_in_left");
   }
-  if (window.pageYOffset >= contact.offsetTop -64-nav_height){
-    contact_title.classList.add("slide_in_left");
+}
+function add_slide_in_right(elements){
+  for (entry in elements){
+    element = elements[entry];
+    element.classList.add("slide_in_right");
   }
+}
+function add_slide_in_left_wait(elements){
+  for (entry in elements){
+    element = elements[entry];
+    element.classList.add("slide_in_left_wait");
+  }
+}
+function add_slide_in_right_wait(elements){
+  for (entry in elements){
+    element = elements[entry];
+    element.classList.add("slide_in_right_wait");
+  }
+}
+function add_fade_in (elements){
+  for (entry in elements){
+    element = elements[entry];
+    element.classList.add("fade_in");
+  }
+}
+function add_fade_in_wait (elements){
+  for (entry in elements){
+    element = elements[entry];
+    element.classList.add("fade_in_wait");
+  }
+}
 
-  if (window.pageYOffset >= education.offsetTop -64-nav_height){
-    //TODO
-    document.getElementById("").add("slide_in_left");
-  }
 
+function update_view() {
+  var window_offset = window.pageYOffset;
+  for (e in eventList){
+    var animation_event = eventList[e];
+    var from = animation_event.from;
+    var to = animation_event.to;
+
+    if (from != null && to != null){
+      if (window_offset >= from && window_offset < to){
+        for (p in animation_event.elements_function_pairs){
+          var pair = animation_event.elements_function_pairs[p];
+          pair[1](pair[0]);
+        }
+      }
+    }else if (from != null && to == null){
+      if (window_offset >= from){
+        for (p in animation_event.elements_function_pairs){
+          var pair = animation_event.elements_function_pairs[p];
+          pair[1](pair[0]);
+        }
+      }
+    } else if (from == null && to != null){
+      if (window_offset < to){
+        for (p in animation_event.elements_function_pairs){
+          var pair = animation_event.elements_function_pairs[p];
+          pair[1](pair[0]);
+        }
+      }
+    }
+  }//for animation event
 }
 
 function scroll_to(element, duration, with_navbar) {
@@ -72,9 +101,6 @@ function scroll_to(element, duration, with_navbar) {
   }
   var startingY = window.pageYOffset;
   var diff = elementY - startingY;
-  console.log("elementY",elementY);
-  console.log("startingY",startingY);
-  console.log("diff",diff);
   var start;
 
   window.requestAnimationFrame(function step(timestamp) {
@@ -87,4 +113,61 @@ function scroll_to(element, duration, with_navbar) {
       window.requestAnimationFrame(step);
     }
   })
+}
+
+function submit_contact_info(){
+  var first_name = document.getElementById("fname").value;
+  var last_name = document.getElementById("lname").value;
+  var email = document.getElementById("email").value;
+  var subject = document.getElementById("subject").value;
+  var submit_button = document.getElementById("submit_button");
+
+
+  console.log(first_name,last_name,email,subject);
+
+  submit_button.classList.add("fade_out");
+  submit_button.classList.add("disabled");
+
+}
+
+function init_eventlist(){
+  var nav_height = document.getElementById("navbar").getBoundingClientRect().height;
+
+  eventList = [
+    { //stick navbar
+      from: document.getElementById("articles").offsetTop - nav_height,
+      to: null,
+      elements_function_pairs: [[[document.getElementById("navbar")], this.add_sticky]]
+    },
+    { //unstick navbar
+      from: null,
+      to: document.getElementById("articles").offsetTop,
+      elements_function_pairs: [[[document.getElementById("navbar")],this.remove_sticky]]
+    },
+    { // activate about, slide in title, fade in content
+      from: document.getElementById("about_container").offsetTop -64 -nav_height,
+      to: document.getElementById("projects_container").offsetTop -64 -nav_height,
+      elements_function_pairs: [ [[document.getElementById("nav_about")],this.toggle_active],
+                                 [[document.getElementById("about_section")],this.add_fade_in_wait],
+                                 [[document.getElementById("about_title")],this.add_slide_in_left]]
+
+    },
+    { // activate projects
+      from: document.getElementById("projects_container").offsetTop -64 -nav_height,
+      to: document.getElementById("contact_container").offsetTop -64 -nav_height,
+      elements_function_pairs: [[[document.getElementById("nav_projects")],this.toggle_active]]
+    },
+    { // activate contact
+      from: document.getElementById("contact_container").offsetTop -64 -nav_height,
+      to: null,
+      elements_function_pairs: [[[document.getElementById("nav_contact")],this.toggle_active]]
+    },
+    { // fade in timeline, slide in textboxes
+      from: document.getElementById("education_section").offsetTop -64 -nav_height,
+      to: null,
+      elements_function_pairs: [[[document.getElementById("timeline_container")],this.add_fade_in],
+                                [[document.getElementById("school_element")],this.add_slide_in_left_wait],
+                                [[document.getElementById("bachelor_element")],this.add_slide_in_right_wait]]
+    }
+  ];
 }

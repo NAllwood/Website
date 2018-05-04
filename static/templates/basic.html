@@ -59,7 +59,7 @@
         </div>
 
         <h2 id="education_section" class="subsection_header">Education</h2>
-        <div class="rowable">
+        <div id="timeline_container" class="rowable">
           <div id="left_timeline_button" class="button left_button disabled">
           </div>
           <section class="timeline">
@@ -95,80 +95,41 @@
 
     <div id="projects_container" class="article_container">
       <article id="projects" class="text_article">
+        <div id="projects_title" class="article_title">
+          Projects
+        </div>
         <p> this will be the projects article </p>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+
       </article>
     </div>
     <div id="contact_container" class="article_container">
       <article id="contact" class="text_article">
-        <p> This will be the contact article </p>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <div id="contact_title" class="article_title">
+          Contact
+        </div>
+        <p>Want to get in contact?<br>
+          just send me an email at <span>nevinallwood@gmail.com</span><br>
+          or use this handy form:</p>
+
+          <div class="contact_form_container">
+           <form action="">
+
+             <label for="fname">First Name</label>
+             <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+             <label for="lname">Last Name</label>
+             <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+             <label for="email">Email Address</label>
+             <input type="email" id="email" name="emailaddress" placeholder="Your email address..">
+
+             <label for="subject">Subject</label>
+             <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+             <div id="submit_button" class="button submit_button" onclick="submit_contact_info()">Submit</div>
+
+           </form>
+          </div>
       </article>
     </div>
 
@@ -176,7 +137,8 @@
 
 
   <script>
-   window.onscroll = function() {update_navbar()};
+  init_eventlist();
+   window.onscroll = function() {update_view()};
   </script>
 
 </body>
