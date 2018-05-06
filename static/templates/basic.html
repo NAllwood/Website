@@ -62,7 +62,7 @@
         <div id="timeline_container" class="rowable">
           <div id="left_timeline_button" class="button left_button disabled">
           </div>
-          <section class="timeline">
+          <div class="timeline">
             <ol>
               <li>
                 <div id="school_element" class="time_element">
@@ -85,10 +85,42 @@
               </li>
               <li></li>
             </ol>
-          </section>
+          </div>
           <div id="right_timeline_button" class="button right_button disabled">
           </div>
         </div>
+
+
+        <section id="skills_section">
+          <h2 class ="subsection_header">Skills</h2>
+
+          <div class="rowable">
+
+            <div class="rowable_element">
+              <div id="javabar" class="skillbar"></div>
+              <div class="skillname">Java</div>
+            </div>
+            <div class="rowable_element">
+              <div id="cbar" class="skillbar"></div>
+              <div class="skillname">C</div>
+            </div>
+            <div class="rowable_element">
+              <div id="cppbar" class="skillbar"></div>
+              <div class="skillname">C++</div>
+            </div>
+            <div class="rowable_element">
+              <div id="pythonbar" class="skillbar"></div>
+              <div class="skillname">Python</div>
+            </div>
+            <div class="rowable_element">
+              <div id="sqlbar" class="skillbar"></div>
+              <div class="skillname">SQL</div>
+            </div>
+
+
+          </div>
+
+        </section>
 
       </article>
     </div>
@@ -138,7 +170,7 @@
 
   <script>
   init_eventlist();
-   window.onscroll = function() {update_view()};
+   window.onscroll = update_view;
   </script>
 
 </body>

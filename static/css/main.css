@@ -403,6 +403,21 @@ input[type=text], input[type=email], select, textarea {
     padding: 20px;
 }
 
+.skillbar {
+  height: 320px;
+  width: 80px;
+  padding: 12px;
+  background-color: var(--light_color);
+  opacity: 1;
+}
+
+.skillname {
+  padding: 16px;
+  background-color: var(--dark_color);
+  color: white;
+  opacity: 1;
+}
+
 @keyframes slideInLeft {
   0%   {opacity: 0; left:-300px; top:0px;}
   100% {opacity: 1; left:0px; top:0px;}

@@ -1,7 +1,10 @@
 
 function add_sticky(elements){
+  var nav_height = document.getElementById("navbar").getBoundingClientRect().height;
   for (entry in elements){
     element = elements[entry];
+    console.log("sticked navbar because:",window.pageYOffset,">=",document.getElementById("navbar_dummy").offsetTop);
+
     element.classList.add("sticky");
   }
 }
@@ -135,13 +138,13 @@ function init_eventlist(){
 
   eventList = [
     { //stick navbar
-      from: document.getElementById("articles").offsetTop - nav_height,
+      from: document.getElementById("navbar_dummy").offsetTop,
       to: null,
       elements_function_pairs: [[[document.getElementById("navbar")], this.add_sticky]]
     },
     { //unstick navbar
       from: null,
-      to: document.getElementById("articles").offsetTop,
+      to: document.getElementById("navbar_dummy").offsetTop,
       elements_function_pairs: [[[document.getElementById("navbar")],this.remove_sticky]]
     },
     { // activate about, slide in title, fade in content
