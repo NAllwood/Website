@@ -418,6 +418,11 @@ input[type=text], input[type=email], select, textarea {
   opacity: 1;
 }
 
+.simple_container {
+  width: inherit;
+  display: block;
+}
+
 @keyframes slideInLeft {
   0%   {opacity: 0; left:-300px; top:0px;}
   100% {opacity: 1; left:0px; top:0px;}

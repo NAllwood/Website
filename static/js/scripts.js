@@ -3,8 +3,6 @@ function add_sticky(elements){
   var nav_height = document.getElementById("navbar").getBoundingClientRect().height;
   for (entry in elements){
     element = elements[entry];
-    console.log("sticked navbar because:",window.pageYOffset,">=",document.getElementById("navbar_dummy").offsetTop);
-
     element.classList.add("sticky");
   }
 }
@@ -125,12 +123,51 @@ function submit_contact_info(){
   var subject = document.getElementById("subject").value;
   var submit_button = document.getElementById("submit_button");
 
-
-  console.log(first_name,last_name,email,subject);
-
   submit_button.classList.add("fade_out");
   submit_button.classList.add("disabled");
 
+}
+
+function render_skills(){
+  var skills_obj_list = [{text:"Java",size:20},
+                     {text:"C",size:16},
+                     {text:"C++",size:12},
+                     {text:"Python",size:16},
+                     {text:"SQL",size:"12px"},
+                     {text:"HTML/CSS",size:8},
+                     {text:"Javascript",size:8},
+                     {text:"Software Architecture",size:8},
+                     {text:"IoT",size:12},
+                     {text:"Android",size:8}];
+
+  var skills_ele_list = make_divs(skills_obj_list);
+  var indices = Array.apply(null, Array(skills_ele_list.length)).map(function (val, index) {return index;});
+
+  var placement = [];
+  container = document.getElementById("skills_container");
+  for(var i = 0; i < 2; i++){
+    placement[i] = [];
+    for(var j = 0; j < 5; j++){
+      var rand = Math.floor((Math.random() * indices.length));
+      var div = skills_ele_list[indices[rand]];
+      div.style.top =
+      container.appendChild();
+    }
+  }
+  console.log(placement);
+}
+
+function make_divs(array){
+  var div_list = [];
+  for(i in array){
+    var div = document.createElement("div");
+    div.innerHTML = array[i].text;
+    //TODO
+    div.style.top = (28-array[i].size).toString()+"px";
+    div.style.padding = array[i].size.toString()+"px";
+    div_list.push(div);
+  }
+  return div_list;
 }
 
 function init_eventlist(){
