@@ -129,32 +129,42 @@ function submit_contact_info(){
 }
 
 function render_skills(){
-  var skills_obj_list = [{text:"Java",size:20},
-                     {text:"C",size:16},
-                     {text:"C++",size:12},
-                     {text:"Python",size:16},
-                     {text:"SQL",size:"12px"},
-                     {text:"HTML/CSS",size:8},
-                     {text:"Javascript",size:8},
-                     {text:"Software Architecture",size:8},
-                     {text:"IoT",size:12},
-                     {text:"Android",size:8}];
+  var skills_obj_list = [{text:"Java",size:32,font_size:"3.5em"},
+                     {text:"C",size:24,font_size:"2.3em"},
+                     {text:"C++",size:16,font_size:"1.6em"},
+                     {text:"Python",size:24,font_size:"2.3em"},
+                     {text:"SQL",size:16,font_size:"1.6em"},
+                     {text:"HTML/CSS",size:8,font_size:"1em"},
+                     {text:"Javascript",size:8,font_size:"1em"},
+                     {text:"Architecture",size:8,font_size:"1em"},
+                     {text:"IoT",size:16,font_size:"1.6em"},
+                     {text:"Android",size:8,font_size:"1em"}];
 
   var skills_ele_list = make_divs(skills_obj_list);
   var indices = Array.apply(null, Array(skills_ele_list.length)).map(function (val, index) {return index;});
 
-  var placement = [];
   container = document.getElementById("skills_container");
-  for(var i = 0; i < 2; i++){
-    placement[i] = [];
-    for(var j = 0; j < 5; j++){
-      var rand = Math.floor((Math.random() * indices.length));
-      var div = skills_ele_list[indices[rand]];
-      div.style.top =
-      container.appendChild();
+  for (var i = 0; i < skills_obj_list.length; i++){
+    var rand_index = Math.floor((Math.random() * indices.length));
+    var rand_top = Math.floor((12+ Math.random() * 12)) * (Math.round(Math.random()) * 2 - 1);
+    var rand_left = Math.floor((12+ Math.random() * 16)) * (Math.round(Math.random()) * 2 - 1);
+    var div = skills_ele_list[indices[rand_index]];
+
+    div.style.top = rand_top.toString()+"px";
+    div.style.left = rand_left.toString()+"px";
+    div.style.fontSize = skills_obj_list[indices[rand_index]].font_size;
+
+    //wrap after five elements
+    if ((i)%5 == 0 && i != 0){
+      var breaker = document.createElement("div");
+      breaker.classList.add("flex_break");
+      container.appendChild(breaker);
     }
+
+    indices.splice(rand_index,1);
+    container.appendChild(div);
+
   }
-  console.log(placement);
 }
 
 function make_divs(array){
@@ -162,9 +172,9 @@ function make_divs(array){
   for(i in array){
     var div = document.createElement("div");
     div.innerHTML = array[i].text;
-    //TODO
-    div.style.top = (28-array[i].size).toString()+"px";
+    div.style.backgroundColor="var(--light_color)";
     div.style.padding = array[i].size.toString()+"px";
+    div.classList.add("skillpoint");
     div_list.push(div);
   }
   return div_list;
