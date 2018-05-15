@@ -19,9 +19,6 @@
           <h2>I develop software.</h2>
       </div>
       <div class="button page_down_button" onclick="scroll_to(navbar,600,0)"> Learn more about what I do <span><b>&rarr;</b></span></div>
-      <div id="hello_page_down" class="simple_navigator" onclick="scroll_to(navbar,600,0)">
-        Learn more about what I do <br><b><i class="down"></i></b>
-      </div>
     </div>
   </div>
 
@@ -39,19 +36,18 @@
         About Me
       </div>
       <article id="about_article" class="text_article">
-
-        <div id="about_section" class="rowable">
+        <div id="about_section" class="flex_row_start">
           <img class="picture" src="{{static_url("images/myface.JPG")}}" alt="Me">
-          <div class="rowable_element">
+          <div class="row_element">
             <ul class="no_bullet_list">
               <li class="about_listing">
-                <span class="descr"><b>Age:</b></span><span>22</span>
+                <span class="slightly_bigger"><b>Age:</b></span><span>22</span>
               </li>
               <li>
-                <span class="descr"><b>Location:</b></span><span>Essen, Germany</span>
+                <span class="slightly_bigger"><b>Location:</b></span><span>Essen, Germany</span>
               </li>
               <li>
-                <span class="descr"><b>Nationality:</b></span><span>german, american</span>
+                <span class="slightly_bigger"><b>Nationality:</b></span><span>german, american</span>
               </li>
             </ul>
             <p>I am a young aspiring software developer currently looking to gain experience and improve my skills. Available for hire. Will work for money. I like computers and food. </p>
@@ -59,7 +55,7 @@
         </div>
 
         <h2 id="education_section" class="subsection_header">Education</h2>
-        <div id="timeline_container" class="rowable">
+        <div id="timeline_container" class="flex_row_center">
           <div id="left_timeline_button" class="button left_button disabled">
           </div>
           <div class="timeline">
@@ -90,15 +86,8 @@
           </div>
         </div>
 
-
-          <h2 class ="subsection_header">Skills</h2>
-
-          <div id="skills_container" class="simple_container">
-
-
-          </div>
-
-
+        <h2 class ="subsection_header">Skills</h2>
+        <div id="skills_container" class="grid_5_container"></div>
 
       </article>
     </div>
@@ -108,7 +97,31 @@
         <div id="projects_title" class="article_title">
           Projects
         </div>
-        <p> this will be the projects article </p>
+
+        <div id="projects" class="grid_3_container">
+          <div class="projects_element">
+            <p class="projects_description">Android app that allows dish creation and sharing, automatic shopping list creation, and pantry management</p>
+            <div class="button submit_button" onclick="scroll_to(navbar,600,0)">Learn more</div>
+            <img id="dishlist_image" class="projects_image" src="{{static_url("images/myface.JPG")}}" alt="Dishlist">
+          </div>
+
+          <!>TODO draw preview images and embed here, also finish button styling <!>
+          <div class="projects_element">
+            <p class="projects_description"><span class="intext_title">Dishlist</span> <br>Android app that allows dish creation and sharing, automatic shopping list creation, and pantry management</p>
+            <img id="dishlist_image" class="projects_image" src="{{static_url("images/myface.JPG")}}" alt="Dishlist">
+          </div>
+
+          <div class="projects_element">
+            <p class="projects_description"><span class="intext_title">Dishlist</span> <br>Android app that allows dish creation and sharing, automatic shopping list creation, and pantry management</p>
+            <img id="dishlist_image" class="projects_image" src="{{static_url("images/myface.JPG")}}" alt="Dishlist">
+          </div>
+
+          <div class="projects_element">
+            <p class="projects_description"><span class="intext_title">Dishlist</span> <br>Android app that allows dish creation and sharing, automatic shopping list creation, and pantry management</p>
+            <img id="dishlist_image" class="projects_image" src="{{static_url("images/myface.JPG")}}" alt="Dishlist">
+          </div>
+
+        </div>
 
       </article>
     </div>

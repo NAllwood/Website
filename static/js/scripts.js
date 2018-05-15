@@ -146,20 +146,13 @@ function render_skills(){
   container = document.getElementById("skills_container");
   for (var i = 0; i < skills_obj_list.length; i++){
     var rand_index = Math.floor((Math.random() * indices.length));
-    var rand_top = Math.floor((12+ Math.random() * 12)) * (Math.round(Math.random()) * 2 - 1);
-    var rand_left = Math.floor((12+ Math.random() * 16)) * (Math.round(Math.random()) * 2 - 1);
+    var rand_top = Math.floor((16+ Math.random() * (32 - skills_obj_list[indices[rand_index]].size))) * (Math.round(Math.random()) * 2 - 1);
+    var rand_left = Math.floor((16+ Math.random() * (32 - skills_obj_list[indices[rand_index]].size))) * (Math.round(Math.random()) * 2 - 1);
     var div = skills_ele_list[indices[rand_index]];
 
     div.style.top = rand_top.toString()+"px";
     div.style.left = rand_left.toString()+"px";
     div.style.fontSize = skills_obj_list[indices[rand_index]].font_size;
-
-    //wrap after five elements
-    if ((i)%5 == 0 && i != 0){
-      var breaker = document.createElement("div");
-      breaker.classList.add("flex_break");
-      container.appendChild(breaker);
-    }
 
     indices.splice(rand_index,1);
     container.appendChild(div);
@@ -183,6 +176,7 @@ function make_divs(array){
 function init_eventlist(){
   var nav_height = document.getElementById("navbar").getBoundingClientRect().height;
 
+  //TODO animations for skills, projects, and contact
   eventList = [
     { //stick navbar
       from: document.getElementById("navbar_dummy").offsetTop,
@@ -195,7 +189,7 @@ function init_eventlist(){
       elements_function_pairs: [[[document.getElementById("navbar")],this.remove_sticky]]
     },
     { // activate about, slide in title, fade in content
-      from: document.getElementById("about_container").offsetTop -64 -nav_height,
+      from: document.getElementById("navbar_dummy").offsetTop,
       to: document.getElementById("projects_container").offsetTop -64 -nav_height,
       elements_function_pairs: [ [[document.getElementById("nav_about")],this.toggle_active],
                                  [[document.getElementById("about_section")],this.add_fade_in_wait],
