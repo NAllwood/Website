@@ -506,10 +506,10 @@ input[type=text], input[type=email], select, textarea {
   width: inherit;
   height: 256px;
   border-radius: 8px;
-  background-color: var(--light_grey);
+  background-color: var(--darkest_grey);
 }
 .projects_element:hover{
-  cursor: pointer;
+
 }
 .projects_image {
   -webkit-transition-duration: 1;
@@ -518,21 +518,35 @@ input[type=text], input[type=email], select, textarea {
   width: 100%;
   height: 100%;
   border-radius: 8px;
+  background-color: linear-gradient( rgba(0,0,0,0.5), rgba(0,0,0,0.9) );
+  filter: blur(2px);
 }
-.projects_image:hover {
+.projects_element:hover img {
   opacity: 0;
   width: 110%;
   height: 110%;
+  visibility: hidden;
 }
 .projects_description {
   transform: translateY(10%);
   text-align: center;
   border-radius: 8px;
-  background-color: var(--light_color);
-  color: white;
   width: 85%;
-  height: 80%;
-  font-size: 1.1em;
+  height: 60%;
+  font-size: 1.3em;
+  color: white;
+}
+
+.projects_button {
+  font-size: 16px;
+  margin-top: 50px;
+  border: 2px solid var(--light_color);
+  padding: 16px 32px;
+  border-radius: 4px;
+}
+.projects_button:hover{
+  background-color: var(--light_color);
+  color:white;
 }
 
 @keyframes slideInLeft {

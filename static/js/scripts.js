@@ -141,7 +141,7 @@ function render_skills(){
                      {text:"Android",size:8,font_size:"1em"}];
 
   var skills_ele_list = make_divs(skills_obj_list);
-  var indices = Array.apply(null, Array(skills_ele_list.length)).map(function (val, index) {return index;});
+  var indices = skills_ele_list.map(function (val, index) {return index;});
 
   container = document.getElementById("skills_container");
   for (var i = 0; i < skills_obj_list.length; i++){
